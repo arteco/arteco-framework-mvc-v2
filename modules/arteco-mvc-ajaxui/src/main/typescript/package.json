@@ -1,0 +1,40 @@
+{
+  "name": "arteco-socializer",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Arteco Consulting SL",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf dist && node node_modules/webpack/bin/webpack.js --env=prod --progress --profile --colors --display-error-details --display-cached",
+    "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=dev --progress --profile --colors"
+  },
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.2",
+    "rxjs": "^5.5.2"
+  },
+  "devDependencies": {
+    "@reactivex/rxjs": "^5.5.2",
+    "@types/jquery": "^3.2.11",
+    "@types/node": "^8.0.26",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.18.2",
+    "ts-loader": "^2.3.4",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.5.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.1"
+  }
+}

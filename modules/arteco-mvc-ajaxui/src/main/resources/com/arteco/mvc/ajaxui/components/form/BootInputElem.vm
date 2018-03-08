@@ -1,0 +1,47 @@
+#if ($elem.type == "checkbox")
+<div class="checkbox #if ($elem.errorMessage) has-error #end">
+    <label>
+        <input type="hidden" value="on" name="_$elem.name">
+        <input type="$elem.type.htmlInputType" name="$elem.name" value="true" #if ($elem.value=="true")
+               checked="checked" #end
+               id="$elem.id"  #if ($elem.readonly) readonly="readonly" #end> $elem.caption.render()
+    </label>
+    #if($elem.help)
+        <span class="help-block">$elem.help.render()</span>
+    #end
+    #if($elem.errorMessage)
+        <div class="text-danger">$elem.errorMessage</div>
+    #end
+</div>
+#else
+<div class="form-group #if ($elem.errorMessage) has-error #end">
+    <label>$elem.caption.render()</label>
+
+    #if ($elem.size)
+    <div class="row">
+    <div class="col-sm-$elem.size">
+    #end
+
+    <input class="form-control"
+           type="$elem.type.htmlInputType"
+           name="$elem.name"
+           value="$elem.value"
+           id="$elem.id"
+           placeholder="$elem.placeholder"
+        #if ($elem.readonly) readonly="readonly" #end
+        #if ($elem.type=="date") data-rd-datepicker="true" data-rd-datepicker-format="$elem.data.get("datepicker-format")" #end
+    />
+
+    #if ($elem.size)
+    </div><!-- end col -->
+    </div><!-- end row -->
+    #end
+
+    #if($elem.help)
+        <span class="help-block">$elem.help.render()</span>
+    #end
+    #if($elem.errorMessage)
+        <div class="text-danger">$elem.errorMessage</div>
+    #end
+</div>
+#end

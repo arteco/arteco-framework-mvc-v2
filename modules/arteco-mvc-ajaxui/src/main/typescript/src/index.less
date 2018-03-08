@@ -1,0 +1,52 @@
+@import "~bootstrap/less/bootstrap";
+@import 'less/_bootstrap-datetimepicker';
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('assets/fonts/Metropolis-Regular.woff');
+}
+
+body {
+  font-family: 'Metropolis', sans-serif;
+}
+
+.navbar {
+  border-radius: 0;
+  transition: margin-left .5s;
+}
+
+#menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #9d9d9d;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.menuContent {
+  padding: 2em;
+}
+
+#content {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  #menu {
+    padding-top: 15px;
+  }
+
+  #menu a {
+    color: white;
+  }
+}
+
+.typeahead {
+  z-index: 1051;
+}

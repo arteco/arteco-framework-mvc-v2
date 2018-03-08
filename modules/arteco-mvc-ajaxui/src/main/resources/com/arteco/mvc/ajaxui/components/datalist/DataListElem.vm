@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+    <tr>
+        #foreach($col in $elem.cols)
+            <th scope="col">$col.render()</th>
+        #end
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($item in $elem.dataList.list)
+        <tr>
+            #foreach($col in $elem.cols)
+                <td scope="col">$col.render($item)</td>
+            #end
+        </tr>
+        #end
+    </tbody>
+</table>
+
+#if ($elem.dataList.helper)
+<nav>
+    <ul class="pager">
+        #if ($elem.dataList.helper.previous)
+            <li class="previous">
+                <a $LinkElem.renderLinkAttr($elem.dataList.helper.previous)>
+                    <span aria-hidden="true">&larr;</span> Older
+                </a>
+            </li>
+        #end
+        #if ($elem.dataList.helper.next)
+            <li class="next">
+                <a $LinkElem.renderLinkAttr($elem.dataList.helper.next)>
+                    <span aria-hidden="true">&rarr;</span> Next
+                </a>
+            </li>
+        #end
+    </ul>
+</nav>
+#end

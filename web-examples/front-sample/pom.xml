@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.arteco.mvc</groupId>
+        <artifactId>web-examples</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
+    <properties>
+        <querydsl.version>4.1.4</querydsl.version>
+    </properties>
+
+    <artifactId>front-sample</artifactId>
+    <version>2.0.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-core</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-jetty</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-jade</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-sass</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-closurejs</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-swagger-v2</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-swagger-v3</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.arteco.mvc</groupId>-->
+            <!--<artifactId>arteco-mvc-vaadin</artifactId>-->
+            <!--<version>2.0.0</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.arteco.mvc</groupId>
+            <artifactId>arteco-mvc-ajaxui</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-sql</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.44</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <finalName>${project.artifactId}-${project.version}-bundle</finalName>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.arteco.mvc.sample.SampleMain</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-maven-plugin</artifactId>
+                <version>${querydsl.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jdbcUser>root</jdbcUser>
+                    <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                    <jdbcUrl>jdbc:mysql://localhost/myapp</jdbcUrl>
+                    <packageName>com.arteco.mvc.sample.domain</packageName>
+                    <sourceFolder>${project.basedir}/target/generated-sources/java</sourceFolder>
+                    <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
+                    <exportBeans>true</exportBeans>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.44</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

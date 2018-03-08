@@ -1,0 +1,10 @@
+<div data-rd-target-slot="menu" class="menuContent">
+    <h3>$elem.caption.render()</h3>
+    <ul>
+        #foreach($item in $elem.items)
+        <li>
+            <a data-rd-link="$item.link">$item.caption.render()</a>
+        </li>
+        #end
+    </ul>
+</div><!-- app end -->

@@ -1,0 +1,54 @@
+<div data-rd-target-slot="app">
+    <div data-rd-slot="top" id="top">
+        $elem.navBar.render()
+    </div><!-- top end -->
+    <div data-rd-slot="middle" id="middle">
+        <div data-rd-slot="menu" id="menu">
+            #if($elem.menu)
+                $elem.menu.render()
+            #end
+        </div><!-- menu end -->
+        <div data-rd-slot="content" id="content">
+            $elem.content.render()
+        </div><!-- content end -->
+    </div><!-- middle end -->
+    <div data-rd-slot="footer" id="footer">
+        $elem.footer.render()
+    </div><!-- footer end -->
+    <script type="javascript">
+        //
+        <!-- type="javascript" es obligatorio -->
+        function openNav() {
+            document.getElementById("menu").style.width = "250px";
+            document.getElementById("menu").style.display = 'block';
+            document.getElementById("menu").open = true;
+
+            document.getElementById("content").style.marginLeft = "250px";
+            document.getElementById("top").style.marginLeft = "250px";
+            document.getElementById("footer").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("menu").style.width = "0";
+            document.getElementById("menu").style.display = 'none';
+            document.getElementById("menu").open = false;
+
+            document.getElementById("content").style.marginLeft = "0";
+            document.getElementById("top").style.marginLeft = "0";
+            document.getElementById("footer").style.marginLeft = "0";
+        }
+
+        function toggleMenu (event) {
+            var menu = document.getElementById("menu");
+            if (menu.open) {
+                closeNav();
+            } else {
+                openNav();
+            }
+            if(event) {
+                event.preventDefault();
+            }
+            return false;
+        }
+    </script>
+</div><!-- app end -->

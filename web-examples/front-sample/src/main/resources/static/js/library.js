@@ -1,0 +1,3 @@
+function mylibraryfunction() {
+    alert("Hi!");
+}
