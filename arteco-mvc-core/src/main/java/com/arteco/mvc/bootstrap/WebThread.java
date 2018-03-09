@@ -16,4 +16,8 @@ public class WebThread {
     public static void set(WebContext webContext) {
         contexts.set(webContext);
     }
+
+    public static void remove() {
+        contexts.remove();
+    }
 }

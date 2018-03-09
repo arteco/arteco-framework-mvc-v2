@@ -2,7 +2,9 @@ package com.arteco.mvc.bootstrap.response;
 
 import com.arteco.mvc.bootstrap.MimeType;
 import com.arteco.mvc.bootstrap.WebContext;
+import com.arteco.mvc.bootstrap.response.txt.Replacement;
 import com.arteco.mvc.bootstrap.utils.ExceptionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -64,7 +66,12 @@ public class Renders {
         serveContent(webContext, bytes, mime);
     }
 
-    public static void write(WebContext webContext, String text, MimeType mime) {
+    public static void write(WebContext webContext, String text, MimeType mime, Replacement... replacements) {
+        if (replacements != null) {
+            for (Replacement replacement : replacements) {
+                text = StringUtils.replace(text, replacement.getSource(), replacement.getTarget());
+            }
+        }
         byte[] bytes = text.getBytes();
         serveContent(webContext, bytes, mime);
     }

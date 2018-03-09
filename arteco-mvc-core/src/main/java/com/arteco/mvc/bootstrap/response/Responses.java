@@ -6,6 +6,7 @@ import com.arteco.mvc.bootstrap.WebResponse;
 import com.arteco.mvc.bootstrap.resource.WebResource;
 import com.arteco.mvc.bootstrap.resource.WebResourceUtils;
 import com.arteco.mvc.bootstrap.response.json.JsonWebResponse;
+import com.arteco.mvc.bootstrap.response.txt.Replacement;
 import com.arteco.mvc.bootstrap.response.view.HtmlWebResponse;
 import com.arteco.mvc.bootstrap.response.view.TextWebResponse;
 import com.arteco.mvc.bootstrap.response.view.ViewWebResponse;
@@ -50,13 +51,14 @@ public class Responses {
         return new RedirectWebResponse(redirection);
     }
 
-    public static WebResponse<String> file(String path, MimeType mimeType) {
+    public static WebResponse<String> file(String path, MimeType mimeType, Replacement... replacements) {
         try {
             WebResource resource = WebResourceUtils.getResource(path);
             String content = IOUtils.toString(resource.getInputStream(), "utf-8");
-            return webContext -> Renders.write(webContext, content, mimeType);
+            return webContext -> Renders.write(webContext, content, mimeType, replacements);
         } catch (IOException e) {
             throw ExceptionUtils.manage(e);
         }
     }
+
 }

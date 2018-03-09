@@ -71,5 +71,6 @@ public class WebMvc {
         WebRoute route = getRoute(webContext);
         WebChainRunner chainRunner = getChainRunner(route);
         chainRunner.process(webContext);
+        WebThread.remove();
     }
 }

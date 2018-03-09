@@ -11,7 +11,7 @@ $(document).ready(function () {
     window["$"] = $;
     let firstReq = true;
     let hash = location.hash.slice(1);
-    let targetUrl = "/page/home";
+    let targetUrl = "%CONTEXT_PATH%%HOME_PAGE%";
     if (hash != null && hash.length > 0) {
         targetUrl = hash;
     }

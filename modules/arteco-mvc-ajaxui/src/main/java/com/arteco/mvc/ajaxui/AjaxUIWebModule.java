@@ -11,8 +11,21 @@ import com.arteco.mvc.bootstrap.WebModule;
  */
 public class AjaxUIWebModule implements WebModule {
 
+    private final String urlPrefix;
+    private final String homePage;
+
+    public AjaxUIWebModule(String urlPrefix, String homePage) {
+        this.urlPrefix = urlPrefix;
+        this.homePage = homePage;
+    }
+
+    public AjaxUIWebModule() {
+        this("/ajaxui", "/home");
+    }
+
     @Override
     public void configure(WebApp webApp) {
+        webApp.addController(new AjaxUiController(webApp, urlPrefix, homePage));
         webApp.addFilter(new IsNewFilterDef(webApp));
     }
 }

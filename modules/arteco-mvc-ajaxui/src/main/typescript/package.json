@@ -6,7 +6,7 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "build": "rm -rf dist && node node_modules/webpack/bin/webpack.js --env=prod --progress --profile --colors --display-error-details --display-cached",
+    "build": "rm -rf dist && node node_modules/webpack/bin/webpack.js --env=prod --profile --colors --display-error-details --display-cached",
     "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=dev --progress --profile --colors"
   },
   "dependencies": {

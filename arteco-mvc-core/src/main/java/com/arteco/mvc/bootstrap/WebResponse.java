@@ -11,6 +11,6 @@ public interface WebResponse<T> {
 
     //FIXME: es necesario este método?
     default T getValue() {
-        return null;
+        throw new RuntimeException("This method is virtual, it should not be called");
     }
 }
