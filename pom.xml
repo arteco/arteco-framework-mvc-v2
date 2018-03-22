@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.arteco.mvc</groupId>
-    <artifactId>arteco-mvc-framework-v2</artifactId>
+    <artifactId>arteco-framework-mvc-v2</artifactId>
     <packaging>pom</packaging>
     <version>2.0.0</version>
     <modules>
